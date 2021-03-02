@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <title>Document</title>
+</head>
+
+<body>
+    <header class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4 text-center">Project Tracker </h1>
+          <p class="lead text-center">Current Time & Date</p>
+          <p id="time-tracker" class="time-tracker text-center"></p>
+        </div>
+    </header>
+    <main>
+        <div class="card m-4 p-1" style="width: 18rem;">
+            <div class="card-header">Instructions</div>
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text">Click the button below to open a form and provide information for the following:</p>
+              <ul class="list-group">
+                <li class="list-group-item">Project Name</li>
+                <li class="list-group-item">Project Type</li>
+                <li class="list-group-item">Due Date</li>
+                <li class="list-group-item">Hourly Rate</li>
+              </ul>
+              
+              <a href="#" class="btn btn-primary">Add Project</a>
+            </div>
+        </div>
+
+
+          <!--Modal form-->
+          <div id="dialog" title="Fill out project information:">
+          <form>
+            <fieldset>
+              <label for="project-name">Project Name</label>
+              <input type="text" name="project-name" id="project-name" value="" class="text d-blcok ui-widget-content ui-corner-all"/>
+
+              <label for="project-type">Project Type</label>
+              <select name="project-type" id="project-type" value="" class="select d-block ui-widget-content ui-corner-all">
+                <option value="frontEnd">Front-End</option>
+                <option value="backEnd">Back-End</option>
+                <option value="fullStack">Full-Stack</option>
+              </select>
+              
+              <label for="due-date-input">Due Date</label>
+              <input type="text" min="1" id="due-date-input" class="form-control" placeholder="When is the project due?" required/>
+              
+              <label for="hourly-rate">Hourly Rate</label>
+              <input type="text" name="hourly-rate" id="hourly-rate" 
+              value="" class="text ui-widget-content ui-corner-all"/>
+
+            </fieldset>
+          </form>
+          </div>
+
+  
+
+
+
+    </main>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
+  
+    <script src="script.js"></script>
+</body>
+
+</html>
