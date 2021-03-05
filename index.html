@@ -5,72 +5,101 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+  
+    
     <title>Document</title>
 </head>
 
 <body>
-    <header class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4 text-center">Project Tracker </h1>
-          <p class="lead text-center">Current Time & Date</p>
-          <p id="time-tracker" class="time-tracker text-center"></p>
-        </div>
-    </header>
-    <main>
-        <div class="card m-4 p-1" style="width: 18rem;">
-            <div class="card-header">Instructions</div>
-            <div class="card-body">
-              <h5 class="card-title"></h5>
-              <p class="card-text">Click the button below to open a form and provide information for the following:</p>
-              <ul class="list-group">
-                <li class="list-group-item">Project Name</li>
-                <li class="list-group-item">Project Type</li>
-                <li class="list-group-item">Due Date</li>
-                <li class="list-group-item">Hourly Rate</li>
-              </ul>
-              
-              <a href="#" class="btn btn-primary">Add Project</a>
-            </div>
-        </div>
+  <header class="jumbotron jumbotron-fluid custom-jumbotron">
+      <div class="container text-center">
+        <h1 class="display-4">Project Tracker </h1>
+        <p class="lead">Current Time & Date</p>
+        <p id="time-tracker" class="time-tracker"></p>
+      </div>
+  </header>
+  <main>
+    <div class="row">
 
-
-          <!--Modal form-->
-          <div id="dialog" title="Fill out project information:">
-          <form>
-            <fieldset>
-              <label for="project-name">Project Name</label>
-              <input type="text" name="project-name" id="project-name" value="" class="text d-blcok ui-widget-content ui-corner-all"/>
-
-              <label for="project-type">Project Type</label>
-              <select name="project-type" id="project-type" value="" class="select d-block ui-widget-content ui-corner-all">
-                <option value="frontEnd">Front-End</option>
-                <option value="backEnd">Back-End</option>
-                <option value="fullStack">Full-Stack</option>
-              </select>
-              
-              <label for="due-date-input">Due Date</label>
-              <input type="text" min="1" id="due-date-input" class="form-control" placeholder="When is the project due?" required/>
-              
-              <label for="hourly-rate">Hourly Rate</label>
-              <input type="text" name="hourly-rate" id="hourly-rate" 
-              value="" class="text ui-widget-content ui-corner-all"/>
-
-            </fieldset>
-          </form>
+      <!--Card that links to modal form-->
+      <section class="col-12 col-md-4 col-lg-3">
+        <div class="card custom-card m-4 p-1">
+          <div class="card-header">Instructions</div>
+          <div class="card-body">
+            <h5 class="card-title"></h5>
+            <p class="card-text">Click the button below to open a form and provide information for the following:</p>
+            <ul class="list-group">
+              <li class="list-group-item">Project Name</li>
+              <li class="list-group-item">Project Type</li>
+              <li class="list-group-item">Due Date</li>
+              <li class="list-group-item">Hourly Rate</li>
+            </ul>
+            <button class="btn btn-primary" id="addProjectBtn">Add Project</button>
           </div>
+        </div>
+      </section>
 
-  
+    <!--Responsive Table-->
+      <section class="col-12 col-md-8 col-lg-9">
+        <div class="table-responsive">
+        <table class="table table-bordered custom-table">
+          <thead>
+            <tr>
+              <th scope="col">Project Name</th>
+              <th scope="col">Project Type</th>
+              <th scope="col">Hourly Rate ($)</th>
+              <th scope="col">Due Date</th>
+              <th scope="col">Days Until Due Date</th>
+              <th scope="col">Potential Earnings ($)</th>
+              <th scope="col" class="p-3"></th>
+            </tr>
+          </thead>
+          <tbody id="project-display">
+          </tbody>
+        </table>
+        </div>
 
+      </section>
+    </div>
 
+    <!--Modal form-->
+    <div id="project-modal">
+      <div id="dialog" title="Fill out project information:">
+        <form>
+          <fieldset>
+            <label for="project-name">Project Name</label>
+            <input type="text" name="project-name" id="project-name" value="" class="text d-blcok ui-widget-content ui-corner-all"/>
 
-    </main>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-  
-    <script src="script.js"></script>
+            <label for="project-type">Project Type</label>
+            <select name="project-type" id="project-type" value="" class="select d-block ui-widget-content ui-corner-all">
+              <option value="frontEnd">Front-End</option>
+              <option value="backEnd">Back-End</option>
+              <option value="fullStack">Full-Stack</option>
+            </select>
+            
+            <label for="due-date-input">Due Date</label>
+            <input type="text" min="1" id="due-date-input" class="form-control" placeholder="When is the project due?" required/>
+            
+            <label for="hourly-rate">Hourly Rate</label>
+            <input type="text" name="hourly-rate" id="hourly-rate" 
+            value="" class="text ui-widget-content ui-corner-all"/>
+
+          </fieldset>
+          <button class="btn btn-primary" id="submitBtn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
